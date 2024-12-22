@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '12'  # 指定 Node.js 版本
       - name: build
         run: |
           npm install
