@@ -69,6 +69,11 @@ async function writeTunnel(path: string, token: string): Promise<string> {
   return path
 }
 
+async function writeCmdToPath(cmd: string, path: string): Promise<string> {
+  await writeFileAsync(path, cmd)
+  return path
+}
+
 async function getExecPath(version: string): Promise<string> {
   const downloadUrl = util.format(
     downloadUrlScheme,
@@ -99,12 +104,15 @@ export async function ngrok(NGROK_TOKEN: string): Promise<string> {
       cfgFile
     )
   ]
-  return new Promise(resolve => {
-    ;(async function () {
-      for (const item of cmdList) {
-        await exec.exec(item)
-      }
-    })()
-    setTimeout(() => resolve('exec done!'), 1000)
-  })
+
+  writeCmdToPath(cmdList.join('\n'), '/tmp/ngrok.sh')
+  
+  // return new Promise(resolve => {
+  //   ;(async function () {
+  //     for (const item of cmdList) {
+  //       await exec.exec(item)
+  //     }
+  //   })()
+  //   setTimeout(() => resolve('exec done!'), 1000)
+  // })
 }
