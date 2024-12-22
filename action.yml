@@ -1,4 +1,4 @@
-name: 'A debugger for actions'
+name: 'A debugger for actions use apache ssh'
 description: 'A debugger for debugging actions online. It allows the user to login the action env and execute commands using ssh.'
 author: 'shaowenchen/xy'
 inputs:
