@@ -1,6 +1,6 @@
 name: 'A debugger for actions'
 description: 'A debugger for debugging actions online. It allows the user to login the action env and execute commands using ssh.'
-author: 'shaowenchen'
+author: 'shaowenchen/xy'
 inputs:
   frp_server_addr:
     required: false
