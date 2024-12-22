@@ -32,7 +32,6 @@ jobs:
           ngrok_proto_2: tcp
           ngrok_addr_3: 30002
           ngrok_proto_3: tcp
-
       - uses: P3TERX/ssh2actions@main
         name: Start SSH via tmate
         env:
