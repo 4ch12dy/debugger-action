@@ -28,7 +28,10 @@ function getFullName(): string {
 
 async function writeTunnel(path: string, token: string): Promise<string> {
   const config = Object()
-  config['authtoken'] = token
+  config['version'] = '3'
+  config['agent'] = {
+    'authtoken': token
+  }
   config['tunnels'] = {
     'tcp-8000': {
       addr: '8000',
