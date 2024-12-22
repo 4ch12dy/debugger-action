@@ -30,7 +30,7 @@ async function writeTunnel(path: string, token: string): Promise<string> {
   const config = Object()
   config['version'] = '3'
   config['agent'] = {
-    'authtoken': token
+    authtoken: token
   }
   config['tunnels'] = {
     'tcp-8000': {
