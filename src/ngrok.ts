@@ -109,7 +109,7 @@ export async function ngrok(NGROK_TOKEN: string): Promise<string> {
   return new Promise(resolve => {
     ;(async function () {
       // await exec.exec(cmdList[0])
-      console.log('exec cmdList[0] done! ---> ' + cmdList[0])
+      await exec.exec('ls /tmp')
     })()
     setTimeout(() => resolve('exec done!'), 1000)
   })
