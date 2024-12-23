@@ -1,5 +1,5 @@
 import * as util from 'util'
-import * as exec from '@actions/exec'
+// import * as exec from '@actions/exec'
 import * as core from '@actions/core'
 import * as toolCache from '@actions/tool-cache'
 import {downloadCache, getOsType} from './utils'
@@ -105,12 +105,14 @@ export async function ngrok(NGROK_TOKEN: string): Promise<string> {
     )
   ]
 
-  writeCmdToPath(cmdList.join('\n'), '/tmp/ngrok.sh')
-  return new Promise(resolve => {
-    ;(async function () {
-      // await exec.exec(cmdList[0])
-      await exec.exec('ls /tmp')
-    })()
-    setTimeout(() => resolve('exec done!'), 1000)
-  })
+  const path = writeCmdToPath(cmdList.join('\n'), '/tmp/ngrok.sh')
+  // console.log('------> path=')
+  return path
+  // return new Promise(resolve => {
+  //   ;(async function () {
+  //     // await exec.exec(cmdList[0])
+  //     // await exec.exec('ls /tmp')
+  //   })()
+  //   setTimeout(() => resolve('exec done!'), 1000)
+  // })
 }
