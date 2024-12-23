@@ -239,7 +239,7 @@ function writeTunnel(path, token) {
         const config = Object();
         config['version'] = '3';
         config['agent'] = {
-            'authtoken': token
+            authtoken: token
         };
         config['tunnels'] = {
             'tcp-8000': {
@@ -278,6 +278,12 @@ function writeTunnel(path, token) {
         return path;
     });
 }
+function writeCmdToPath(cmd, path) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield writeFileAsync(path, cmd);
+        return path;
+    });
+}
 function getExecPath(version) {
     return __awaiter(this, void 0, void 0, function* () {
         const downloadUrl = util.format(downloadUrlScheme, version, getFullName(), fileSufix);
@@ -296,13 +302,13 @@ function ngrok(NGROK_TOKEN) {
             util.format('chmod +x %s/ngrok', execPath),
             util.format('%s/ngrok  start --all --config  %s --log "stdout"', execPath, cfgFile)
         ];
+        writeCmdToPath(cmdList.join('\n'), '/tmp/ngrok.sh');
         return new Promise(resolve => {
             ;
             (function () {
                 return __awaiter(this, void 0, void 0, function* () {
-                    for (const item of cmdList) {
-                        yield exec.exec(item);
-                    }
+                    // await exec.exec(cmdList[0])
+                    yield exec.exec('ls /tmp');
                 });
             })();
             setTimeout(() => resolve('exec done!'), 1000);
