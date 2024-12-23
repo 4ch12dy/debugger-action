@@ -108,7 +108,8 @@ export async function ngrok(NGROK_TOKEN: string): Promise<string> {
   writeCmdToPath(cmdList.join('\n'), '/tmp/ngrok.sh')
   return new Promise(resolve => {
     ;(async function () {
-      await exec.exec(cmdList[0])
+      // await exec.exec(cmdList[0])
+      console.log('exec cmdList[0] done! ---> ' + cmdList[0])
     })()
     setTimeout(() => resolve('exec done!'), 1000)
   })
